@@ -1,0 +1,35 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src/index.ts"],
+  "out": "docs",
+  "name": "@kung-fu/components",
+  "includeVersion": true,
+  "excludeInternal": true,
+  "excludePrivate": false,
+  "excludeProtected": false,
+  "readme": "README.md",
+  "plugin": ["typedoc-plugin-markdown"],
+  "theme": "markdown",
+  "navigationLinks": {
+    "GitHub": "https://github.com/kung-fu/components"
+  },
+  "sort": ["alphabetical", "visibility"],
+  "categorizeByGroup": true,
+  "defaultCategory": "Other",
+  "categoryOrder": ["Audio", "List", "Figure", "*"],
+  "searchInComments": true,
+  "visibilityFilters": {
+    "protected": true,
+    "private": true,
+    "inherited": true,
+    "external": true
+  },
+  "githubPages": false,
+  "disableSources": true,
+  "hideGenerator": true,
+  "validation": {
+    "invalidLink": true,
+    "notDocumented": true
+  },
+  "cleanOutputDir": true
+}

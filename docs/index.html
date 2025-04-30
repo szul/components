@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@kung-fu/components Documentation</title>
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+  <nav>
+    <a href="README.md">Home</a>
+    <a href="globals.md">API</a>
+  </nav>
+
+  <h1>@kung-fu/components Documentation</h1>
+  <p>A lightweight, dependency-free library for enhancing HTML with vanilla JavaScript.</p>
+
+  <h2>Navigation</h2>
+  <ul>
+    <li><a href="README.md">README - Overview & Usage Examples</a></li>
+    <li><a href="globals.md">API Reference</a></li>
+    <li><a href="classes/AudioPlayer.md">AudioPlayer Class</a></li>
+    <li><a href="interfaces/AudioPlayerOptions.md">AudioPlayerOptions Interface</a></li>
+    <li><a href="functions/createAudioPlayer.md">createAudioPlayer Function</a></li>
+    <li><a href="functions/rotateListStyleType.md">rotateListStyleType Function</a></li>
+    <li><a href="functions/wrapImageWithFigure.md">wrapImageWithFigure Function</a></li>
+  </ul>
+
+  <p>This documentation is automatically generated using TypeDoc from the TypeScript source code.</p>
+
+  <script>
+    // Simple script to load markdown content
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('a[href$=".md"]');
+      
+      links.forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const href = this.getAttribute('href');
+          
+          fetch(href)
+            .then(response => response.text())
+            .then(markdown => {
+              // Very simple markdown renderer - just for navigation purposes
+              const html = markdown
+                .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+                .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+                .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+                .replace(/\*\*(.*)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*)\*/g, '<em>$1</em>')
+                .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+                .replace(/```([^`]+)```/g, '<pre><code>$1</code></pre>')
+                .replace(/^- (.*$)/gm, '<li>$1</li>')
+                .replace(/<\/li>\n<li>/g, '</li><li>')
+                .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+              
+              const content = document.createElement('div');
+              content.innerHTML = html;
+              document.body.innerHTML = '';
+              document.body.appendChild(document.querySelector('nav').cloneNode(true));
+              document.body.appendChild(content);
+            })
+            .catch(error => {
+              console.error('Error loading markdown:', error);
+            });
+        });
+      });
+    });
+  </script>
+
+  <footer>
+    <p>@kung-fu/components v0.4.0 Documentation</p>
+  </footer>
+</body>
+</html>

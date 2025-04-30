@@ -1,3 +1,7 @@
+**@kung-fu/components v0.4.0**
+
+***
+
 # @kung-fu/components
 
 A lightweight, dependency-free library for enhancing HTML with vanilla JavaScript.

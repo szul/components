@@ -1,15 +1,39 @@
 /**
- * @module quietmath/components
+ * Configuration options for the AudioPlayer
  */
-
 export interface AudioPlayerOptions {
+    /**
+     * ID of the HTML container element for the audio player (without the # prefix)
+     */
     ContainerID: string;
+
+    /**
+     * Default audio source URL
+     */
     DefaultSource: string;
 }
 
+/**
+ * AudioPlayer - A class for creating customizable audio players with playlist support
+ */
 export class AudioPlayer {
+    /**
+     * Player configuration options
+     */
     private _opts: AudioPlayerOptions;
+
+    /**
+     * Reference to the audio container DOM element
+     */
     private _audioContainer: HTMLDivElement;
+
+    /**
+     * Creates an instance of AudioPlayer.
+     * Initializes the audio player with the specified container and default source.
+     * 
+     * @param opts - Configuration options
+     * @throws Error if the container or audio element cannot be found
+     */
     constructor(opts: AudioPlayerOptions) {
         this._opts = opts;
         const { ContainerID, DefaultSource } = this._opts;
@@ -24,8 +48,16 @@ export class AudioPlayer {
         audioPlayer.style.display = 'block';
         this._audioContainer = audioContainer;
     }
+
+    /**
+     * Adds playlist functionality to the audio player.
+     * Sets up click event listeners on playlist items to switch audio sources
+     * and update audio player elements (cover image, title, date, summary).
+     * 
+     * @param playlistID - The ID of the playlist container element (without the # prefix)
+     * @throws Error if the playlist element cannot be found
+     */
     public withPlaylist(playlistID: string): void {
-        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const self = this;
         const audioPlayer = self._audioContainer.querySelector('audio') as HTMLAudioElement;
         const playlist = document.querySelector(`#${ playlistID }`) as HTMLDataListElement;
@@ -67,6 +99,13 @@ export class AudioPlayer {
     }
 }
 
+/**
+ * Factory function to create an AudioPlayer instance
+ * 
+ * @param audioContainerID - ID of the container element (without the # prefix)
+ * @param defaultSource - Optional default audio source URL
+ * @returns A new AudioPlayer instance
+ */
 export const createAudioPlayer = (audioContainerID: string, defaultSource?: string): AudioPlayer => {
     return new AudioPlayer({ ContainerID: audioContainerID, DefaultSource: defaultSource as string });
 };
